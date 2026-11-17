@@ -69,7 +69,6 @@ button { cursor: pointer; }
 .nav-active svg { color: #99a6ff; }
 .nav-count { margin-left: auto; padding: 2px 6px; border-radius: 5px; background: rgba(235, 93, 113, .16); color: #f48293; font-size: 10px; }
 .nav-label-spaced { margin-top: 27px; }
-.key-hint { margin-left: auto; color: var(--faint); font-size: 12px; }
 .soon-dot { width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: #e6b360; }
 .sidebar-bottom { margin-top: auto; }
 .plan-card { margin: 0 1px 15px; padding: 13px 12px 12px; border: 1px solid rgba(130, 144, 255, .17); border-radius: 9px; background: linear-gradient(145deg, rgba(99, 114, 196, .13), rgba(23, 31, 51, .5)); }

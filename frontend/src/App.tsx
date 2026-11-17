@@ -35,6 +35,8 @@ const severityClass: Record<string, string> = {
   CRITICAL: "critical", HIGH: "high", MEDIUM: "medium", LOW: "low",
 };
 const ActivityChart = lazy(() => import("./components/ActivityChart"));
+const apiDocsUrl = import.meta.env.VITE_API_DOCS_URL
+  || "https://github.com/pallaviv-18/CODE_GUARD_AI/blob/main/docs/API.md";
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -232,11 +234,11 @@ function App() {
           ))}
         </nav>
         <div className="nav-label nav-label-spaced">DEVELOPER TOOLS</div>
-        <button className="nav-item" onClick={() => setShowUpload(true)}><Code2 size={17} /><span>New code scan</span><span className="key-hint">↵</span></button>
+        <button className="nav-item" onClick={() => setShowUpload(true)}><Code2 size={17} /><span>New code scan</span></button>
         <button className="nav-item" onClick={() => setPage("settings")}><KeyRound size={17} /><span>Integrations</span><span className="soon-dot" /></button>
         <div className="sidebar-bottom">
           <div className="plan-card"><div className="plan-icon"><Sparkles size={16} /></div><strong>Build with confidence</strong><p>Every issue caught is time saved in production.</p><button onClick={() => setShowUpload(true)}>Run a scan <ArrowRight size={14} /></button></div>
-          <button className="nav-item help-link" onClick={() => window.open("http://localhost:8000/docs", "_blank", "noopener,noreferrer")}><CircleHelp size={17} /><span>Documentation</span><ArrowRight size={14} /></button>
+          <button className="nav-item help-link" onClick={() => window.open(apiDocsUrl, "_blank", "noopener,noreferrer")}><CircleHelp size={17} /><span>Documentation</span><ArrowRight size={14} /></button>
           <div className="profile-row"><div className="profile-avatar">{user.name.slice(0, 1).toUpperCase()}</div><div className="profile-meta"><strong>{user.name}</strong><span>{user.email}</span></div><button className="icon-button profile-action" onClick={logout} aria-label="Sign out"><LogOut size={16} /></button></div>
         </div>
       </aside>
@@ -270,7 +272,7 @@ function LandingPage({ onStart, onSignIn }: { onStart: () => void; onSignIn: () 
     <main className="landing-page">
       <header className="landing-header">
         <div className="brand"><div className="brand-mark"><ShieldCheck size={21} /></div><span>codeguard<span className="brand-ai">.ai</span></span></div>
-        <nav className="landing-nav"><a href="#features">Platform</a><a href="#how-it-works">How it works</a><a href="http://localhost:8000/docs" target="_blank" rel="noreferrer">API docs <ArrowUpRight size={13} /></a></nav>
+        <nav className="landing-nav"><a href="#features">Platform</a><a href="#how-it-works">How it works</a><a href={apiDocsUrl} target="_blank" rel="noreferrer">API docs <ArrowUpRight size={13} /></a></nav>
         <div className="landing-actions"><button className="landing-signin" onClick={onSignIn}>Sign in</button><button className="button-primary" onClick={onStart}>Get started <ArrowRight size={14} /></button></div>
       </header>
       <section className="landing-hero">
@@ -278,7 +280,7 @@ function LandingPage({ onStart, onSignIn }: { onStart: () => void; onSignIn: () 
           <div className="landing-eyebrow"><span className="pulse-dot" /> CODE QUALITY, WITH CLARITY</div>
           <h1>Catch the things<br />code review <span>misses.</span></h1>
           <p>Understand code risks before they reach production. Analyze source safely, trace every finding, and turn noisy signals into actionable next steps.</p>
-          <div className="landing-cta"><button className="button-primary landing-primary" onClick={onStart}>Start your workspace <ArrowRight size={15} /></button><a href="http://localhost:8000/docs" target="_blank" rel="noreferrer">Explore the API <ArrowUpRight size={14} /></a></div>
+          <div className="landing-cta"><button className="button-primary landing-primary" onClick={onStart}>Start your workspace <ArrowRight size={15} /></button><a href={apiDocsUrl} target="_blank" rel="noreferrer">Explore the API <ArrowUpRight size={14} /></a></div>
           <div className="landing-assurance"><span><ShieldCheck size={15} /> Source is never executed</span><span><Check size={14} /> Findings include exact lines</span></div>
         </div>
         <div className="landing-visual">
