@@ -1,0 +1,51 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: codeguard
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: codeguard
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U codeguard -d codeguard"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  ai-service:
+    build:
+      context: ./ai-service
+    environment:
+      AI_SERVICE_API_KEY: ${AI_SERVICE_API_KEY:-local-development-key}
+    ports:
+      - "8000:8000"
+  backend:
+    build:
+      context: ./backend
+    environment:
+      DATABASE_URL: postgresql://codeguard:${POSTGRES_PASSWORD:-change-me}@postgres:5432/codeguard?schema=public
+      JWT_SECRET: ${JWT_SECRET:-replace-this-with-a-secure-random-secret-at-least-32-characters}
+      AI_SERVICE_URL: http://ai-service:8000
+      AI_SERVICE_API_KEY: ${AI_SERVICE_API_KEY:-local-development-key}
+      PORT: 4000
+      FRONTEND_ORIGIN: http://localhost:5173
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ai-service:
+        condition: service_started
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:4000/api
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+volumes:
+  postgres_data:

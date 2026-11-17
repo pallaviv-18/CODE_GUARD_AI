@@ -1,0 +1,51 @@
+description,category,severity,confidence,externally_reachable,sensitive_data,priority
+"Hardcoded API secret is committed in a service configuration",security,critical,0.98,true,true,critical
+"SQL query concatenates untrusted request input",security,high,0.92,true,true,critical
+"TLS certificate validation is disabled for an external request",security,high,0.94,true,false,high
+"Password is embedded in a source constant",security,critical,0.99,false,true,critical
+"Dynamic evaluation uses data from a web request",security,high,0.91,true,true,critical
+"Process command runs with shell enabled and user-controlled arguments",security,high,0.88,true,false,high
+"Function uses an undefined variable and fails at runtime",bug,high,0.93,false,false,high
+"Missing null check causes a crash for an empty response",bug,medium,0.82,true,false,high
+"Loop condition never changes and blocks request handling",bug,high,0.89,true,false,high
+"Incorrect boundary check skips the final array item",bug,medium,0.79,false,false,medium
+"Resource handle is not closed when an exception occurs",bug,medium,0.84,false,true,medium
+"Python parser reports an invalid syntax token",bug,high,0.97,false,false,high
+"Very long method has high cognitive complexity",quality,medium,0.83,false,false,medium
+"Broad exception handler hides unexpected failures",quality,low,0.8,false,false,low
+"Debug mode is enabled in application configuration",quality,medium,0.93,true,false,high
+"Repeated logic could be extracted into a shared helper",quality,low,0.74,false,false,low
+"Unexplained literal value makes configuration difficult to maintain",quality,low,0.77,false,false,low
+"Long source line reduces readability",quality,low,0.87,false,false,low
+"Repeated database lookup occurs inside a large loop",performance,medium,0.84,true,false,high
+"Synchronous file read blocks an asynchronous request handler",performance,high,0.9,true,false,high
+"Repeated regular expression compilation adds avoidable work",performance,low,0.8,false,false,low
+"Unbounded collection grows for every processed request",performance,high,0.92,true,true,critical
+"Large object is copied repeatedly in a hot loop",performance,medium,0.82,false,false,medium
+"Inefficient nested scan grows quadratically with input size",performance,medium,0.85,true,false,high
+"An outdated dependency version has a known vulnerable release",dependency,critical,0.98,true,true,critical
+"Dependency is outside its supported maintenance window",dependency,medium,0.85,false,false,medium
+"Unpinned package version makes builds non-reproducible",dependency,low,0.88,false,false,low
+"Transitive package introduces a vulnerable parser",dependency,high,0.93,true,true,critical
+"Unused dependency increases the application attack surface",dependency,low,0.8,false,false,low
+"Package integrity is not verified during installation",dependency,high,0.91,true,false,high
+"Unexpected indent prevents Python module parsing",bug,high,0.96,false,false,high
+"Comparison uses assignment instead of equality",bug,high,0.92,true,false,high
+"A file stream is opened without a context manager",quality,medium,0.84,false,false,medium
+"Request handler repeats expensive serialization work",performance,medium,0.81,true,false,medium
+"A stale package exposes an avoidable security risk",dependency,high,0.9,true,true,critical
+"User input reaches a database operation without parameter binding",security,high,0.95,true,true,critical
+"A malformed response can trigger an index error",bug,medium,0.83,true,false,high
+"A deeply nested conditional is difficult to maintain",quality,low,0.78,false,false,low
+"A repeated network request causes unnecessary latency",performance,medium,0.86,true,false,high
+"A dependency contains an unsafe deserialization routine",dependency,critical,0.97,true,true,critical
+"Credentials appear in a checked-in environment file",security,critical,0.99,false,true,critical
+"A missing return branch produces an invalid result",bug,medium,0.8,false,false,medium
+"An undocumented magic number obscures a business rule",quality,low,0.75,false,false,low
+"A database query is repeated even when its result is unchanged",performance,medium,0.82,true,false,medium
+"A package has an unpatched remotely reachable vulnerability",dependency,critical,0.98,true,true,critical
+"Remote input is passed to dynamic code evaluation",security,critical,0.96,true,true,critical
+"A syntax error leaves a required branch unfinished",bug,high,0.94,false,false,high
+"A generic catch silently discards an error",quality,medium,0.85,true,false,high
+"A large response is recomputed for each consumer",performance,low,0.79,false,false,low
+"A vulnerable transitive package handles untrusted uploads",dependency,critical,0.96,true,true,critical
